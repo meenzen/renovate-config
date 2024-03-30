@@ -60,6 +60,10 @@
       "matchPackagePrefixes": ["OpenTelemetry"],
       "groupName": "opentelemetry-dotnet monorepo"
     }
+    {
+      "matchPackagePrefixes": ["Streamlabs.SocketClient"],
+      "groupName": "Streamlabs.SocketClient"
+    },
   ],
   "regexManagers": [
     {
