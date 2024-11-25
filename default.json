@@ -1,5 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", "group:recommended"],
+  "ignorePresets": [":ignoreModulesAndTests"],
   "packageRules": [
     {
       "depTypeList": ["devDependencies", "require-dev"],
@@ -47,7 +49,7 @@
       "groupName": "testcontainers-dotnet"
     },
     {
-      "matchPackagePrefixes": ["Serilog"],
+      "matchPackageNames": ["Serilog**"],
       "groupName": "serilog"
     },
     {
@@ -57,12 +59,21 @@
       "groupName": "nerdbank.gitversioning"
     },
     {
-      "matchPackagePrefixes": ["OpenTelemetry"],
+      "matchPackageNames": ["OpenTelemetry**"],
       "groupName": "opentelemetry-dotnet monorepo"
     },
     {
-      "matchPackagePrefixes": ["Streamlabs.SocketClient"],
+      "matchPackageNames": ["Streamlabs.SocketClient"],
       "groupName": "Streamlabs.SocketClient"
+    },
+    {
+      "matchPackageNames": [
+        "Microsoft.EntityFrameworkCore**",
+        "Npgsql**",
+        "EFCore**"
+      ],
+      "automerge": false,
+      "groupName": "efcore dependencies"
     }
   ],
   "regexManagers": [
@@ -81,7 +92,5 @@
       "depNameTemplate": "{{{replace '__' '-' depName}}}",
       "datasourceTemplate": "nuget"
     }
-  ],
-  "extends": ["config:recommended", "group:recommended"],
-  "ignorePresets": [":ignoreModulesAndTests"]
+  ]
 }
