@@ -1,0 +1,40 @@
+name: Sync renovate.json to default.json
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Sync renovate.json -> default.json and commit
+        run: |
+          set -euo pipefail
+          if [ ! -f renovate.json ]; then
+            echo "renovate.json not found"
+            exit 0
+          fi
+          if [ -f default.json ] && cmp -s renovate.json default.json; then
+            echo "No changes to sync."
+            exit 0
+          fi
+          cp renovate.json default.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add default.json
+          if git diff --cached --quiet; then
+            echo "No staged changes to commit."
+            exit 0
+          fi
+          git commit -m "chore: sync default.json from renovate.json"
+          git push
