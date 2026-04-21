@@ -1,0 +1,106 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:best-practices",
+    "group:recommended",
+    "helpers:forgejoDigestChangelogs",
+    "helpers:githubDigestChangelogs"
+  ],
+  "ignorePresets": [":ignoreModulesAndTests"],
+  "packageRules": [
+    {
+      "depTypeList": ["devDependencies", "require-dev"],
+      "updateTypes": ["patch", "minor", "digest"],
+      "groupName": "devDependencies (non-major)"
+    },
+    {
+      "matchSourceUrlPrefixes": [
+        "https://github.com/dotnet/aspnetcore",
+        "https://github.com/dotnet/efcore",
+        "https://github.com/dotnet/extensions",
+        "https://github.com/dotnet/runtime",
+        "https://github.com/dotnet/scaffolding",
+        "https://github.com/dotnet/sdk-container-builds",
+        "https://github.com/dotnet/winforms"
+      ],
+      "groupName": "dotnet monorepo"
+    },
+    {
+      "matchPackagePrefixes": ["Microsoft.CodeAnalysis"],
+      "groupName": "microsoft code-analysis monorepo"
+    },
+    {
+      "matchPackageNames": ["dotnet-sdk"],
+      "groupName": "dotnet monorepo"
+    },
+    {
+      "matchSourceUrlPrefixes": [
+        "https://github.com/AzureAD/microsoft-identity-web"
+      ],
+      "groupName": "microsoft identity web"
+    },
+    {
+      "matchSourceUrlPrefixes": ["https://github.com/servicetitan/Stl.Fusion"],
+      "groupName": "stl.fusion"
+    },
+    {
+      "matchSourceUrlPrefixes": ["https://github.com/ActualLab/Fusion"],
+      "groupName": "actuallab.fusion"
+    },
+    {
+      "matchSourceUrlPrefixes": [
+        "https://github.com/testcontainers/testcontainers-dotnet"
+      ],
+      "groupName": "testcontainers-dotnet"
+    },
+    {
+      "matchPackageNames": ["Serilog**"],
+      "groupName": "serilog"
+    },
+    {
+      "matchSourceUrlPrefixes": [
+        "https://github.com/dotnet/Nerdbank.GitVersioning"
+      ],
+      "groupName": "nerdbank.gitversioning"
+    },
+    {
+      "matchPackageNames": ["OpenTelemetry**"],
+      "groupName": "opentelemetry-dotnet monorepo"
+    },
+    {
+      "matchPackageNames": ["Streamlabs.SocketClient"],
+      "groupName": "Streamlabs.SocketClient"
+    },
+    {
+      "matchPackageNames": [
+        "Microsoft.EntityFrameworkCore**",
+        "Npgsql**",
+        "EFCore**"
+      ],
+      "automerge": false,
+      "groupName": "efcore dependencies"
+    },
+    {
+      "matchPackageNames": ["FluentAssertions"],
+      "replacementName": "AwesomeAssertions",
+      "replacementVersion": "7.0.0"
+    }
+  ],
+  "regexManagers": [
+    {
+      "fileMatch": ["\\.(?:cs|fs|vb)proj$"],
+      "matchStrings": [
+        "<ContainerBaseImage>(?<depName>.*?):(?<currentValue>.*?)<\\/ContainerBaseImage>\\n"
+      ],
+      "datasourceTemplate": "docker"
+    },
+    {
+      "fileMatch": [".*y[a]?ml$"],
+      "matchStrings": [
+        "DOTNET_TOOL_VERSION_(?<depName>.*?): (?<currentValue>.*?)\\n"
+      ],
+      "depNameTemplate": "{{{replace '__' '-' depName}}}",
+      "datasourceTemplate": "nuget"
+    }
+  ]
+}
