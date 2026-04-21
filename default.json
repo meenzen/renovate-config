@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended", "group:recommended"],
+  "extends": ["config:recommended", "group:recommended", ":helpers:pinGitHubActionDigests"],
   "ignorePresets": [":ignoreModulesAndTests"],
   "packageRules": [
     {
