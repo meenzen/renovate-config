@@ -19,6 +19,14 @@
       "groupName": "devDependencies (non-major)"
     },
     {
+      "matchUpdateTypes": [
+        "patch",
+        "pin"
+      ],
+      "matchCurrentVersion": "!/^0/",
+      "automerge": true
+    }
+    {
       "groupName": "dotnet monorepo",
       "matchSourceUrls": [
         "https://github.com/dotnet/aspnetcore{/,}**",
