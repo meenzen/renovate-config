@@ -83,8 +83,9 @@
       ]
     },
     {
-      "matchPackageNames": ["OpenTelemetry**"],
-      "groupName": "opentelemetry-dotnet monorepo"
+      "matchPackageNames": ["OpenTelemetry{/,}**"],
+      "groupName": "opentelemetry-dotnet monorepo",
+      "versioning": "loose"
     },
     {
       "matchPackageNames": ["Streamlabs.SocketClient"],
