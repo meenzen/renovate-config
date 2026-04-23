@@ -1,23 +1,31 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:best-practices", "group:recommended"],
+  "extends": [
+    "config:best-practices",
+    "group:recommended"
+  ],
   "ignorePresets": [":ignoreModulesAndTests"],
   "packageRules": [
     {
-      "matchDepTypes": ["devDependencies", "require-dev"],
-      "matchUpdateTypes": ["patch", "minor", "digest"],
+      "matchDepTypes": [
+        "devDependencies",
+        "require-dev"
+      ],
+      "matchUpdateTypes": [
+        "patch",
+        "minor",
+        "digest"
+      ],
       "groupName": "devDependencies (non-major)"
     },
     {
-      "matchUpdateTypes": ["patch", "pin"],
+      "matchUpdateTypes": [
+        "patch",
+        "pin"
+      ],
       "matchCurrentVersion": "!/^0/",
       "automerge": true
-    },
-    {
-      "matchSourceUrls": ["https://github.com/thomhurst/TUnit{/,}**"],
-      "matchUpdateTypes": ["minor", "patch", "pin"],
-      "automerge": true
-    },
+    }
     {
       "groupName": "dotnet monorepo",
       "matchSourceUrls": [
@@ -32,7 +40,9 @@
     },
     {
       "groupName": "microsoft code-analysis monorepo",
-      "matchPackageNames": ["Microsoft.CodeAnalysis{/,}**"]
+      "matchPackageNames": [
+        "Microsoft.CodeAnalysis{/,}**"
+      ]
     },
     {
       "matchPackageNames": ["dotnet-sdk"],
@@ -46,11 +56,15 @@
     },
     {
       "groupName": "stl.fusion",
-      "matchSourceUrls": ["https://github.com/servicetitan/Stl.Fusion{/,}**"]
+      "matchSourceUrls": [
+        "https://github.com/servicetitan/Stl.Fusion{/,}**"
+      ]
     },
     {
       "groupName": "actuallab.fusion",
-      "matchSourceUrls": ["https://github.com/ActualLab/Fusion{/,}**"]
+      "matchSourceUrls": [
+        "https://github.com/ActualLab/Fusion{/,}**"
+      ]
     },
     {
       "groupName": "testcontainers-dotnet",
@@ -95,17 +109,13 @@
     {
       "customType": "regex",
       "managerFilePatterns": ["/\\.(?:cs|fs|vb)proj$/"],
-      "matchStrings": [
-        "<ContainerBaseImage>(?<depName>.*?):(?<currentValue>.*?)<\\/ContainerBaseImage>\\n"
-      ],
+      "matchStrings": ["<ContainerBaseImage>(?<depName>.*?):(?<currentValue>.*?)<\\/ContainerBaseImage>\\n"],
       "datasourceTemplate": "docker"
     },
     {
       "customType": "regex",
       "managerFilePatterns": ["/.*y[a]?ml$/"],
-      "matchStrings": [
-        "DOTNET_TOOL_VERSION_(?<depName>.*?): (?<currentValue>.*?)\\n"
-      ],
+      "matchStrings": ["DOTNET_TOOL_VERSION_(?<depName>.*?): (?<currentValue>.*?)\\n"],
       "depNameTemplate": "{{{replace '__' '-' depName}}}",
       "datasourceTemplate": "nuget"
     }
