@@ -25,7 +25,12 @@
       ],
       "matchCurrentVersion": "!/^0/",
       "automerge": true
-    }
+    },
+    {
+      "matchSourceUrls": ["https://github.com/thomhurst/TUnit{/,}**"],
+      "matchUpdateTypes": ["minor", "patch", "pin"],
+      "automerge": true
+    },
     {
       "groupName": "dotnet monorepo",
       "matchSourceUrls": [
