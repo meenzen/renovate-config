@@ -49,6 +49,13 @@
       "groupName": "dotnet monorepo"
     },
     {
+      "groupName": "microsoft testing platform monorepo",
+      "matchSourceUrls": [
+        "https://github.com/microsoft/testfx{/,}**",
+        "https://github.com/microsoft/codecoverage{/,}**"
+      ]
+    },
+    {
       "groupName": "microsoft identity web",
       "matchSourceUrls": [
         "https://github.com/AzureAD/microsoft-identity-web{/,}**"
