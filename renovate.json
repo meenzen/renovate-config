@@ -30,7 +30,6 @@
       "groupName": "dotnet monorepo",
       "matchSourceUrls": [
         "https://github.com/dotnet/aspnetcore{/,}**",
-        "https://github.com/dotnet/efcore{/,}**",
         "https://github.com/dotnet/extensions{/,}**",
         "https://github.com/dotnet/runtime{/,}**",
         "https://github.com/dotnet/scaffolding{/,}**",
@@ -99,10 +98,15 @@
       "groupName": "Streamlabs.SocketClient"
     },
     {
+      "matchSourceUrls": {
+        "https://github.com/dotnet/efcore{/,}**"
+      },
       "matchPackageNames": [
         "Microsoft.EntityFrameworkCore**",
         "Npgsql**",
-        "EFCore**"
+        "EFCore**",
+        "dotnet-ef",
+        "Microsoft.AspNetCore.DataProtection.EntityFrameworkCore"
       ],
       "automerge": false,
       "groupName": "efcore dependencies"
