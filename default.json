@@ -98,9 +98,13 @@
       "groupName": "Streamlabs.SocketClient"
     },
     {
-      "matchSourceUrls": {
+      "matchSourceUrls": [
         "https://github.com/dotnet/efcore{/,}**"
-      },
+      ],
+      "automerge": false,
+      "groupName": "efcore dependencies"
+    },
+    {
       "matchPackageNames": [
         "Microsoft.EntityFrameworkCore**",
         "Npgsql**",
